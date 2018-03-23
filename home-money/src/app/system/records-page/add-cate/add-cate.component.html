@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-header bordered">
+        <div class="header-block">
+            <h3 class="title">Добавить категорию</h3>
+        </div>
+    </div>
+    <div class="card-block">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="form-group" [ngClass]="{'has-error':catName.invalid && catName.touched}">
+                <label class="control-label" for="category-name">Введите название</label>
+                <input
+                 type="text"
+                 id="category-name"
+                 class="form-control"
+                  ngModel
+                  #catName="ngModel"
+                  name="catName"
+                  required
+                 >
+                <span class="form-help-text"
+                *ngIf="catName.invalid && catName.touched"
+                >вводите название котигории</span>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': catVal.invalid && catVal.touched}">
+                <label class="control-label" for="category-value">Введите лимит</label>
+                <input
+                type="number"
+                id="category-value"
+                class="form-control"
+                required
+                min="1"
+                name="catVal"
+                #catVal="ngModel"
+                [ngModel]="1"
+                >
+                <span class="form-help-text"
+                *ngIf= "catVal.invalid && catVal.touched"
+                >вводите сумму</span>
+            </div>
+            <button  class="btn btn-primary" [disabled]="!f.valid">Добавить</button>
+        </form>
+    </div>
+</div>

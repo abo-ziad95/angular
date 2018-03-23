@@ -1,0 +1,24 @@
+<div class="title-block">
+    <h3 class="title">
+        Страница записей <span class="sparkline bar"></span>
+    </h3>
+</div>
+
+<section class="section" *ngIf="isLoading">
+  <section class="section text-center" *ngIf="!isLoading">
+    loading...
+  </section>
+    <div class="row">
+        <div class="col-md-6">
+          <add-event [categories]="categories"></add-event>
+        </div>
+        <div class="col-md-6">
+          <add-cate (newCate)= "newCatAdded($event)"></add-cate>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <edit-cate [categories]="categories" (updatedCat)="catWasUpdated($event)"></edit-cate>
+      </div>
+    </div>
+</section>
